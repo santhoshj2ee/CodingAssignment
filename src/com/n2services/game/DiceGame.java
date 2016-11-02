@@ -11,6 +11,7 @@ import java.util.Random;
  */
 
 public class DiceGame {
+	private static final int DICEMAXROLL = 5;
 	private HashMap<Integer,Integer> singleMap;
 	private HashMap<Integer, Integer> tripletMap;
 	private HashMap<Integer, Integer> inputMap;
@@ -90,14 +91,14 @@ public class DiceGame {
 	 */
 	private Integer[] randomInputArray() {
 		Random rand = new Random();
-		Integer[] inputArray = new Integer[5];
-		for(int i=0;i<5;i++) {
+		Integer[] inputArray = new Integer[DICEMAXROLL];
+		for(int i=0;i<inputArray.length;i++) {
 			inputArray[i] = rand.nextInt(5) + 1;
 		}
 		return inputArray;
 		
 	}
-	
+
 	public static void main(String[] args){
 		DiceGame game = new DiceGame();
 		Integer [] array = game.randomInputArray();
