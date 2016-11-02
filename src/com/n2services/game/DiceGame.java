@@ -3,6 +3,7 @@ package com.n2services.game;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * To calculate the sum of 5 different dice values based on various conditions 
@@ -23,7 +24,7 @@ public class DiceGame {
 	/*
 	 * Core logic for calculating the sum
 	 */
-	public Integer caluclulateScore(ArrayList<Integer> diceInput) {
+	public Integer calculateScore(ArrayList<Integer> diceInput) {
 		
 		Integer total = 0;
 		Integer balance = 0;
@@ -84,9 +85,24 @@ public class DiceGame {
 		singleMap.put(6,0);
 	}
 	
+	/*
+	 * To Randomly generate 5 input values 
+	 */
+	private Integer[] randomInputArray() {
+		Random rand = new Random();
+		Integer[] inputArray = new Integer[5];
+		for(int i=0;i<5;i++) {
+			inputArray[i] = rand.nextInt(5) + 1;
+		}
+		return inputArray;
+		
+	}
+	
 	public static void main(String[] args){
-
-		System.out.println(new DiceGame().caluclulateScore(new ArrayList<>(Arrays.asList(5,4,5,4,5))));
-
+		DiceGame game = new DiceGame();
+		Integer [] array = game.randomInputArray();
+		System.out.println("Input Values "+Arrays.toString(array));
+		System.out.println(game.calculateScore(new ArrayList<Integer>(Arrays.asList(array))));
+		
 	}
 }
